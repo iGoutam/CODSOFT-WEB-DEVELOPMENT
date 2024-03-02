@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Tool</title>
+    <style>
+        /* CSS styling */
+        /* Add your CSS styles here */
+        /* CSS styling */
+        /* CSS styling */
+        
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #app {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #b91818;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        form {
+            margin-bottom: 20px;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        button {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        button {
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Project Creation Form -->
+        <form id="projectForm">
+            <input type="text" id="projectName" placeholder="Enter project name">
+            <button type="submit">Create Project</button>
+        </form>
+
+        <!-- Project List -->
+        <ul id="projectList"></ul>
+
+        <!-- Task Creation Form -->
+        <form id="taskForm">
+            <input type="text" id="taskName" placeholder="Enter task name">
+            <input type="date" id="taskDeadline">
+            <button type="submit">Add Task</button>
+        </form>
+
+        <!-- Task List -->
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        // JavaScript functionality
+        // Add your JavaScript code here
+        document.getElementById("projectForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const projectName = document.getElementById("projectName").value;
+            if (projectName.trim() !== "") {
+                // Create a new project
+                const projectItem = document.createElement("li");
+                projectItem.textContent = projectName;
+                document.getElementById("projectList").appendChild(projectItem);
+                // Clear input field
+                document.getElementById("projectName").value = "";
+            }
+        });
+
+        document.getElementById("taskForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const taskName = document.getElementById("taskName").value;
+            const taskDeadline = document.getElementById("taskDeadline").value;
+            if (taskName.trim() !== "" && taskDeadline.trim() !== "") {
+                // Create a new task
+                const taskItem = document.createElement("li");
+                taskItem.textContent = `${taskName} - Deadline: ${taskDeadline}`;
+                document.getElementById("taskList").appendChild(taskItem);
+                // Clear input fields
+                document.getElementById("taskName").value = "";
+                document.getElementById("taskDeadline").value = "";
+            }
+        });
+    </script>
+</body>
+
+</html>
